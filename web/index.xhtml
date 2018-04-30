@@ -1,0 +1,51 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+        <p:panel id="pnlLibro" header="Registro de Libros" footer="2018">
+            <h:form id="tblLibro">
+                <h:panelGrid id="tblLibro" columns="2">
+                    <p:outputLabel id="lblISBN" value="ISBN: "/>
+                    <p:inputNumber id="txtISBN" value="#{libroBean.unLibro.a}"/>
+                    
+                    <p:outputLabel id="lbltitle" value="Título del libro:"/>
+                    <p:inputNumber id="txttitle" value="#{libroBean.unLibro.b}"/>
+                    
+                    <p:outputLabel id="lblautor" value="Nombre del autor:"/>
+                    <p:inputNumber id="txtautor" value="#{libroBean.unLibro.c}"/>
+                    
+                    <p:outputLabel id="lblprecio" value="Precio:"/>
+                    <p:inputNumber id="txtprecio" value="#{libroBean.unLibro.d}"/>
+                    
+                    <p:outputLabel/>
+                    <p:commandButton id="btnRegistrarLibro" value="Registrar el Libro" 
+                                     update="tblMuestraLibros"
+                                     actionListener="#{libroBean.guardarLibro}"/>
+                </h:panelGrid>
+                <h:panelGrid id="tblMuestraLibros" columns="4">
+                    <p:dataTable id="tblLibros" value="#{libroBean.listaLibro.listadoLibro}" 
+                                 var="cadaLibro" 
+                                 emptyMessage="No hay nada">
+                        <p:column headerText="ISBN">
+                            <p:outputLabel value="#{cadaLibro.isbn}"/>
+                        </p:column>
+                        <p:column headerText="Título">
+                            <p:outputLabel value="#{cadaLibro.title}"/>
+                        </p:column>
+                        <p:column headerText="Autor">
+                            <p:outputLabel value="#{cadaLibro.autor}"/>
+                        </p:column>
+                        <p:column headerText="Precio">
+                            <p:outputLabel value="#{cadaLibro.precio}"/>
+                        </p:column>
+                    </p:dataTable>
+                </h:panelGrid>
+            </h:form>
+        </p:panel>
+    </h:body>
+</html>
